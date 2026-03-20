@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800;900&family=Share+Tech+Mono&family=Exo+2:wght@300;400;500;600&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#03060f;color:#e2eeff;font-family:'Exo 2',sans-serif;overflow-x:hidden}
+::-webkit-scrollbar{width:3px}::-webkit-scrollbar-track{background:#03060f}::-webkit-scrollbar-thumb{background:#0f2d5c}
+.orb{font-family:'Orbitron',monospace}
+.mono{font-family:'Share Tech Mono',monospace}
+nav{position:sticky;top:0;z-index:100;background:rgba(3,6,15,0.95);backdrop-filter:blur(10px);border-bottom:1px solid #0f2d5c;padding:14px 32px;display:flex;justify-content:space-between;align-items:center}
+.logo{font-family:'Orbitron',monospace;font-size:12px;letter-spacing:.2em;color:#00f5ff;text-shadow:0 0 10px rgba(0,245,255,.7)}
+.nav-links{display:flex;gap:24px}
+.nav-links a{font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#7ba7d4;text-decoration:none;transition:color .2s}
+.nav-links a:hover{color:#00f5ff}
+section{padding:80px 32px}
+.label{font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:#00f5ff;opacity:.7;margin-bottom:12px}
+h2{font-family:'Orbitron',monospace;font-size:28px;font-weight:700;color:#e2eeff;margin-bottom:8px}
+.cyan{color:#00f5ff;text-shadow:0 0 10px rgba(0,245,255,.6)}
+.divider{width:80px;height:1px;background:linear-gradient(90deg,#00f5ff,transparent);margin:16px 0 48px}
+.panel{background:linear-gradient(135deg,rgba(10,22,40,.95),rgba(6,13,30,.98));border:1px solid #0f2d5c;position:relative;overflow:hidden}
+.panel::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(0,245,255,.4),transparent)}
+
+/* HERO */
+#hero{min-height:92vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;position:relative;background-image:linear-gradient(rgba(0,245,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(0,245,255,.03) 1px,transparent 1px);background-size:60px 60px}
+.badge{display:inline-flex;align-items:center;gap:8px;padding:8px 16px;border:1px solid #0f2d5c;background:rgba(10,22,40,.8);margin-bottom:28px;font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:.2em;color:#7ba7d4}
+.dot-live{width:7px;height:7px;border-radius:50%;background:#4ade80;box-shadow:0 0 6px rgba(74,222,128,.8);animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.hero-name{font-family:'Orbitron',monospace;font-size:clamp(48px,9vw,92px);font-weight:900;letter-spacing:.08em;line-height:1;margin-bottom:8px;color:#e2eeff}
+.hero-sub{font-family:'Orbitron',monospace;font-size:clamp(18px,3vw,32px);font-weight:400;letter-spacing:.3em;color:#00f5ff;text-shadow:0 0 12px rgba(0,245,255,.6);margin-bottom:20px}
+#typed-out{font-family:'Share Tech Mono',monospace;font-size:14px;color:#7ba7d4;height:24px;display:flex;align-items:center;justify-content:center;margin-bottom:8px}
+.cursor{display:inline-block;width:2px;height:14px;background:#00f5ff;margin-left:2px;animation:blink .6s step-end infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+.tech-chips{font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:.25em;text-transform:uppercase;color:#3a6090;margin-bottom:40px}
+.btns{display:flex;gap:16px;flex-wrap:wrap;justify-content:center;margin-bottom:40px}
+.btn-cyan{font-family:'Orbitron',monospace;font-size:10px;letter-spacing:.15em;text-transform:uppercase;padding:12px 28px;border:1px solid #00f5ff;color:#00f5ff;background:transparent;cursor:pointer;transition:all .3s;text-decoration:none;display:inline-block}
+.btn-cyan:hover{background:rgba(0,245,255,.1);box-shadow:0 0 20px rgba(0,245,255,.25)}
+.btn-plasma{font-family:'Orbitron',monospace;font-size:10px;letter-spacing:.15em;text-transform:uppercase;padding:12px 28px;border:1px solid #7b2fff;color:#7b2fff;background:transparent;cursor:pointer;transition:all .3s;text-decoration:none;display:inline-block}
+.btn-plasma:hover{background:rgba(123,47,255,.1)}
+.ieee-tag{font-family:'Share Tech Mono',monospace;font-size:10px;color:#3a6090;border:1px solid #0f2d5c;padding:8px 20px;display:inline-block;letter-spacing:.15em}
+
+/* PROJECTS */
+#projects{background:rgba(6,13,30,.3)}
+.proj-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
+.proj-card{padding:24px;cursor:default;transition:all .3s;position:relative}
+.proj-card:hover{border-color:rgba(0,245,255,.3);box-shadow:0 0 30px rgba(0,245,255,.07)}
+.proj-id{font-family:'Share Tech Mono',monospace;font-size:10px;color:#00f5ff;opacity:.5;margin-bottom:12px}
+.status-tag{float:right;font-family:'Share Tech Mono',monospace;font-size:9px;padding:2px 8px;border:1px solid rgba(0,245,255,.3);color:#00f5ff;background:rgba(0,245,255,.05)}
+.proj-title{font-family:'Orbitron',monospace;font-size:12px;font-weight:700;color:#e2eeff;letter-spacing:.05em;margin-bottom:4px;line-height:1.4}
+.proj-type{font-family:'Share Tech Mono',monospace;font-size:9px;letter-spacing:.2em;color:#00f5ff;opacity:.6;margin-bottom:16px;text-transform:uppercase}
+.proj-desc{font-size:12px;color:#7ba7d4;line-height:1.7;margin-bottom:16px}
+.highlights li{font-family:'Share Tech Mono',monospace;font-size:10px;color:#3a6090;margin-bottom:6px;list-style:none;padding-left:14px;position:relative}
+.highlights li::before{content:'▸';position:absolute;left:0;color:#00f5ff;opacity:.5}
+.tech-tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:16px}
+.tech-tag{font-family:'Share Tech Mono',monospace;font-size:9px;padding:3px 8px;border:1px solid #0f2d5c;color:#3a6090;background:rgba(15,45,92,.2)}
+.bottom-line{position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,#00f5ff,transparent);opacity:.1;transition:opacity .3s}
+.proj-card:hover .bottom-line{opacity:.5}
+
+/* SKILLS */
+.skill-groups{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;margin-bottom:20px}
+.skill-panel{padding:24px}
+.skill-cat{font-family:'Orbitron',monospace;font-size:10px;letter-spacing:.1em;color:#e2eeff;text-transform:uppercase;margin-bottom:24px;display:flex;align-items:center;gap:8px}
+.skill-cat span{font-size:16px}
+.skill-row{margin-bottom:16px}
+.skill-name-row{display:flex;justify-content:space-between;margin-bottom:6px}
+.skill-name{font-family:'Share Tech Mono',monospace;font-size:11px;color:#7ba7d4}
+.skill-pct{font-family:'Share Tech Mono',monospace;font-size:10px;color:#00f5ff;opacity:.7}
+.bar-track{height:2px;background:rgba(15,45,92,.6);border-radius:1px}
+.bar-fill{height:100%;border-radius:1px;transition:width .8s ease}
+.upskill{font-family:'Share Tech Mono',monospace;font-size:8px;color:#ffb300;border:1px solid rgba(255,179,0,.3);padding:1px 5px;margin-left:4px}
+.tools-panel{padding:24px}
+.tool-list{display:flex;flex-wrap:wrap;gap:8px}
+.tool-chip{font-family:'Share Tech Mono',monospace;font-size:10px;padding:5px 12px;border:1px solid #0f2d5c;color:#7ba7d4;background:rgba(15,45,92,.2);transition:all .2s;cursor:default}
+.tool-chip:hover{border-color:#00f5ff44;color:#00f5ff}
+.lang-row{display:flex;gap:12px;margin-top:12px}
+.lang-panel{flex:1;padding:12px 20px;display:flex;align-items:center;gap:16px}
+.lang-name{font-family:'Orbitron',monospace;font-size:10px;color:#e2eeff;white-space:nowrap}
+.lang-bar-track{flex:1;height:2px;background:#0f2d5c;border-radius:1px}
+.lang-bar-fill{height:100%;border-radius:1px;background:linear-gradient(90deg,#00f5ff,#7b2fff)}
+.lang-level{font-family:'Share Tech Mono',monospace;font-size:10px;color:#00f5ff;white-space:nowrap}
+
+/* EXPERIENCE */
+#experience{background:rgba(6,13,30,.3)}
+.timeline{position:relative;max-width:720px;margin:0 auto}
+.timeline::before{content:'';position:absolute;left:16px;top:0;bottom:0;width:1px;background:linear-gradient(180deg,#00f5ff,#7b2fff,transparent)}
+.tl-item{position:relative;padding-left:56px;margin-bottom:32px}
+.tl-node{position:absolute;left:0;top:4px;width:32px;height:32px;border:1px solid rgba(0,245,255,.4);background:rgba(0,245,255,.07);display:flex;align-items:center;justify-content:center;font-size:13px;transition:all .3s}
+.tl-item:hover .tl-node{transform:scale(1.1);box-shadow:0 0 12px rgba(0,245,255,.2)}
+.tl-card{padding:24px;transition:border-color .3s}
+.tl-item:hover .tl-card{border-color:rgba(0,245,255,.25)}
+.period-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;flex-wrap:wrap;gap:8px}
+.period{font-family:'Share Tech Mono',monospace;font-size:10px;color:#3a6090}
+.type-badge{font-family:'Share Tech Mono',monospace;font-size:9px;letter-spacing:.15em;padding:2px 8px;border:1px solid rgba(0,245,255,.25);color:#00f5ff;text-transform:uppercase}
+.tl-title{font-family:'Orbitron',monospace;font-size:12px;font-weight:700;color:#e2eeff;letter-spacing:.05em;margin-bottom:4px}
+.tl-org{font-size:12px;color:#7ba7d4;margin-bottom:2px}
+.tl-loc{font-family:'Share Tech Mono',monospace;font-size:10px;color:#3a6090;margin-bottom:14px}
+.tl-details li{font-family:'Share Tech Mono',monospace;font-size:10px;color:#3a6090;list-style:none;padding-left:14px;position:relative;margin-bottom:5px}
+.tl-details li::before{content:'▸';position:absolute;left:0;color:#00f5ff;opacity:.5}
+
+/* CONTACT */
+.contact-wrap{max-width:640px;margin:0 auto;text-align:center}
+.contact-desc{font-size:13px;color:#7ba7d4;line-height:1.8;margin-bottom:40px}
+.contact-panel{padding:32px;margin-bottom:16px}
+.avail-row{display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:24px}
+.avail-text{font-family:'Share Tech Mono',monospace;font-size:11px;color:#7ba7d4}
+.email-row{display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;margin-bottom:20px}
+.email-box{font-family:'Share Tech Mono',monospace;font-size:12px;color:#00f5ff;padding:10px 20px;border:1px solid #0f2d5c;background:rgba(15,45,92,.15)}
+.copy-btn{font-family:'Orbitron',monospace;font-size:9px;letter-spacing:.15em;padding:10px 16px;border:1px solid #00f5ff;color:#00f5ff;background:transparent;cursor:pointer;text-transform:uppercase;transition:all .3s}
+.copy-btn:hover{background:rgba(0,245,255,.1)}
+.soc-links{display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap}
+.soc-link{font-family:'Share Tech Mono',monospace;font-size:11px;color:#7ba7d4;text-decoration:none;transition:color .2s}
+.soc-link:hover{color:#00f5ff}
+.soc-sep{color:#0f2d5c}
+.regions{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:16px}
+.region{font-family:'Share Tech Mono',monospace;font-size:10px;color:#3a6090;padding:8px;border:1px solid rgba(15,45,92,.5);background:rgba(10,22,40,.5);text-align:center}
+footer{text-align:center;padding:32px;border-top:1px solid #0f2d5c;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.foot-text{font-family:'Share Tech Mono',monospace;font-size:10px;color:#3a6090}
+.scanline{position:fixed;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,rgba(0,245,255,.5),transparent);animation:scanAnim 7s linear infinite;pointer-events:none;z-index:999}
+@keyframes scanAnim{0%{top:0;opacity:0}5%{opacity:1}95%{opacity:1}100%{top:100%;opacity:0}}
+</style>
+
+<div class="scanline"></div>
+
+<nav>
+  <div class="logo">AM<span style="color:#3a6090">.exe</span></div>
+  <div class="nav-links">
+    <a href="#hero">About</a>
+    <a href="#projects">Projects</a>
+    <a href="#skills">Skills</a>
+    <a href="#experience">Experience</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="badge"><div class="dot-live"></div>MSc Student · Leibniz Universität Hannover</div>
+  <div class="hero-name">ARJUN</div>
+  <div class="hero-sub">MOHANDAS</div>
+  <div id="typed-out"><span id="typed"></span><span class="cursor"></span></div>
+  <div class="tech-chips">Robotics · Automation · Embedded Systems · Computer Vision</div>
+  <div class="btns">
+    <a href="#projects" class="btn-cyan">View Projects</a>
+    <a href="#contact" class="btn-plasma">Contact Me</a>
+  </div>
+  <div class="ieee-tag">IEEE Published · ICKECS 2024 · ROS · SLAM · Computer Vision</div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="label">// system.projects</div>
+  <h2>Featured <span class="cyan">Projects</span></h2>
+  <div class="divider"></div>
+  <div class="proj-grid">
+    <div class="panel proj-card">
+      <div class="proj-id">[01] <span class="status-tag">Active</span></div>
+      <div class="proj-title">Medical Humanoid Robot</div>
+      <div class="proj-type">Final Year Project</div>
+      <div class="proj-desc">AI-powered humanoid robot for medical assistance. Integrates multi-modal sensors, actuator control, and an AI-based communication system for human–robot interaction.</div>
+      <ul class="highlights">
+        <li>Multi-modal sensor integration (vision, depth, tactile)</li>
+        <li>AI-based natural language communication layer</li>
+        <li>Real-time actuator control with safety interlocks</li>
+      </ul>
+      <div class="tech-tags">
+        <span class="tech-tag">Embedded</span><span class="tech-tag">AI/ML</span><span class="tech-tag">Sensor Fusion</span><span class="tech-tag">Python</span><span class="tech-tag">ROS</span>
+      </div>
+      <div class="bottom-line"></div>
+    </div>
+    <div class="panel proj-card">
+      <div class="proj-id">[02] <span class="status-tag" style="border-color:rgba(123,47,255,.4);color:#7b2fff;background:rgba(123,47,255,.05)">Published</span></div>
+      <div class="proj-title">ROS/SLAM Robotic Vacuum Cleaner</div>
+      <div class="proj-type" style="color:#7b2fff;opacity:.7">IEEE ICKECS 2024 Publication</div>
+      <div class="proj-desc">Autonomous navigation robot using SLAM for real-time mapping and path planning. Peer-reviewed and published at IEEE ICKECS 2024.</div>
+      <ul class="highlights">
+        <li>Simultaneous Localisation and Mapping pipeline</li>
+        <li>Autonomous obstacle avoidance & re-planning</li>
+        <li>IEEE peer-reviewed research paper</li>
+      </ul>
+      <div class="tech-tags">
+        <span class="tech-tag">ROS</span><span class="tech-tag">SLAM</span><span class="tech-tag">Python</span><span class="tech-tag">C++</span><span class="tech-tag">Arduino</span><span class="tech-tag">RPi</span>
+      </div>
+      <div class="bottom-line" style="background:linear-gradient(90deg,transparent,#7b2fff,transparent)"></div>
+    </div>
+    <div class="panel proj-card">
+      <div class="proj-id">[03] <span class="status-tag" style="border-color:rgba(255,179,0,.4);color:#ffb300;background:rgba(255,179,0,.05)">Complete</span></div>
+      <div class="proj-title">Computer Vision Pipeline</div>
+      <div class="proj-type" style="color:#ffb300;opacity:.7">Academic Project</div>
+      <div class="proj-desc">OpenCV-based real-time object detection deployed on Raspberry Pi. Optimised inference pipeline for edge computing with custom training workflow.</div>
+      <ul class="highlights">
+        <li>Real-time detection at 15+ FPS on edge hardware</li>
+        <li>Custom training pipeline for domain datasets</li>
+        <li>Lightweight model optimisation for embedded deploy</li>
+      </ul>
+      <div class="tech-tags">
+        <span class="tech-tag">OpenCV</span><span class="tech-tag">Python</span><span class="tech-tag">RPi</span><span class="tech-tag">TF Lite</span><span class="tech-tag">NumPy</span>
+      </div>
+      <div class="bottom-line" style="background:linear-gradient(90deg,transparent,#ffb300,transparent)"></div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="label">// core.capabilities</div>
+  <h2>Technical <span class="cyan">Skills</span></h2>
+  <div class="divider"></div>
+  <div class="skill-groups">
+    <div class="panel skill-panel">
+      <div class="skill-cat"><span>⬡</span> Robotics & Automation</div>
+      <div id="skills1"></div>
+    </div>
+    <div class="panel skill-panel">
+      <div class="skill-cat"><span style="color:#7b2fff">⬡</span> Programming</div>
+      <div id="skills2"></div>
+    </div>
+    <div class="panel skill-panel">
+      <div class="skill-cat"><span style="color:#ffb300">⬡</span> Hardware & AI</div>
+      <div id="skills3"></div>
+    </div>
+  </div>
+  <div class="panel tools-panel" style="margin-bottom:12px">
+    <div class="label" style="margin-bottom:16px">// tools & environment</div>
+    <div class="tool-list" id="tools"></div>
+  </div>
+  <div class="lang-row">
+    <div class="panel lang-panel">
+      <div class="lang-name">English</div>
+      <div class="lang-bar-track"><div class="lang-bar-fill" style="width:95%"></div></div>
+      <div class="lang-level">Native</div>
+    </div>
+    <div class="panel lang-panel">
+      <div class="lang-name">German</div>
+      <div class="lang-bar-track"><div class="lang-bar-fill" style="width:40%"></div></div>
+      <div class="lang-level">B1</div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="label">// career.log</div>
+  <h2>Experience & <span class="cyan">Education</span></h2>
+  <div class="divider"></div>
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-node" style="color:#00f5ff">◈</div>
+      <div class="panel tl-card">
+        <div class="period-row">
+          <span class="period">2023 – Present</span>
+          <span class="type-badge">Education</span>
+        </div>
+        <div class="tl-title">MSc AI-Driven Mechatronics</div>
+        <div class="tl-org">Leibniz Universität Hannover</div>
+        <div class="tl-loc">Hannover, Germany</div>
+        <ul class="tl-details">
+          <li>Specialisation in robotics, automation, and AI integration</li>
+          <li>Final Year Project: Medical Humanoid Robot with AI communication</li>
+          <li>Research areas: embedded systems, computer vision, ROS2</li>
+        </ul>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-node" style="color:#7b2fff;border-color:rgba(123,47,255,.4);background:rgba(123,47,255,.07)">◆</div>
+      <div class="panel tl-card" style="border-color:rgba(123,47,255,.2)">
+        <div class="period-row">
+          <span class="period">2022 – 2023</span>
+          <span class="type-badge" style="color:#7b2fff;border-color:rgba(123,47,255,.3)">Work</span>
+        </div>
+        <div class="tl-title">Mentor — Robotics & Engineering</div>
+        <div class="tl-org">HowNWhy Education</div>
+        <div class="tl-loc">India</div>
+        <ul class="tl-details">
+          <li>Mentored students in robotics, embedded systems, and programming</li>
+          <li>Designed curriculum for Arduino and Raspberry Pi workshops</li>
+          <li>Led hands-on sessions on sensor integration and automation</li>
+        </ul>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-node" style="color:#ffb300;border-color:rgba(255,179,0,.4);background:rgba(255,179,0,.07)">★</div>
+      <div class="panel tl-card" style="border-color:rgba(255,179,0,.2)">
+        <div class="period-row">
+          <span class="period">2024</span>
+          <span class="type-badge" style="color:#ffb300;border-color:rgba(255,179,0,.3)">Publication</span>
+        </div>
+        <div class="tl-title">IEEE Publication — ICKECS 2024</div>
+        <div class="tl-org">International Conference on Knowledge Engineering & Communication Systems</div>
+        <div class="tl-loc">Peer Reviewed</div>
+        <ul class="tl-details">
+          <li>Autonomous navigation using ROS and SLAM algorithms</li>
+          <li>Robotic vacuum cleaner: real-time mapping & localisation</li>
+          <li>Topics: path planning, obstacle avoidance, SLAM</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-wrap">
+    <div class="label" style="text-align:center">// init.connection</div>
+    <h2 style="text-align:center">Let's <span class="cyan">Connect</span></h2>
+    <div class="divider" style="margin:16px auto 32px"></div>
+    <p class="contact-desc">Actively seeking Werkstudent roles in robotics, automation, and mechatronics in Hannover, Hamburg, and surrounding regions. Open to collaborations and project discussions.</p>
+    <div class="panel contact-panel">
+      <div class="avail-row">
+        <div class="dot-live"></div>
+        <span class="avail-text">Available for Werkstudent roles · Non-EU (work permit required)</span>
+      </div>
+      <div class="email-row">
+        <div class="email-box">arjunmohandas18@gmail.com</div>
+        <button class="copy-btn" id="copyBtn" onclick="copyEmail()">Copy</button>
+      </div>
+      <div class="soc-links">
+        <a href="mailto:arjunmohandas18@gmail.com" class="soc-link">✉ Email</a>
+        <span class="soc-sep">|</span>
+        <a href="https://linkedin.com" class="soc-link" target="_blank">◈ LinkedIn</a>
+        <span class="soc-sep">|</span>
+        <a href="https://github.com" class="soc-link" target="_blank">◆ GitHub</a>
+      </div>
+    </div>
+    <div class="regions">
+      <div class="region">📍 Hannover</div>
+      <div class="region">📍 Hamburg</div>
+      <div class="region">📍 Lower Saxony</div>
+      <div class="region">📍 Remote-Hybrid</div>
+      <div class="region">📍 Wolfsburg</div>
+      <div class="region">📍 Hildesheim</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span class="foot-text">© 2024 Arjun Mohandas · Built with Next.js + Vercel</span>
+  <span class="orb" style="font-size:11px;color:#3a6090;letter-spacing:.2em">AM<span style="color:#00f5ff">.exe</span></span>
+</footer>
+
+<script>
+const tagline = 'AI-Driven Mechatronics Engineer';
+let i = 0;
+const el = document.getElementById('typed');
+function type(){if(i<tagline.length){el.textContent=tagline.slice(0,++i);setTimeout(type,65)}}
+setTimeout(type,600);
+
+const s1=[{n:'ROS / ROS2',l:60,up:true},{n:'SLAM',l:75},{n:'Embedded Systems',l:85},{n:'PLC Programming',l:70},{n:'LabVIEW',l:65},{n:'SolidWorks',l:72}];
+const s2=[{n:'Python',l:88},{n:'C++',l:74},{n:'MATLAB',l:65}];
+const s3=[{n:'Arduino',l:90},{n:'Raspberry Pi',l:88},{n:'OpenCV',l:80},{n:'AI Model Dev',l:75},{n:'TensorFlow Lite',l:65}];
+const colors=['#00f5ff','#7b2fff','#ffb300'];
+function renderSkills(arr,id,color){
+  const d=document.getElementById(id);
+  d.innerHTML=arr.map(s=>`<div class="skill-row"><div class="skill-name-row"><span class="skill-name">${s.n}${s.up?'<span class="upskill">↑</span>':''}</span><span class="skill-pct" style="color:${color}">${s.l}%</span></div><div class="bar-track"><div class="bar-fill" style="width:${s.l}%;background:linear-gradient(90deg,${color},${color}88);box-shadow:0 0 5px ${color}50"></div></div></div>`).join('');
+}
+renderSkills(s1,'skills1',colors[0]);
+renderSkills(s2,'skills2',colors[1]);
+renderSkills(s3,'skills3',colors[2]);
+
+const tools=['ROS','ROS2','Linux','Git','SolidWorks','LabVIEW','Arduino IDE','VS Code','MATLAB','OpenCV','TensorFlow','Raspberry Pi OS','Docker'];
+document.getElementById('tools').innerHTML=tools.map(t=>`<span class="tool-chip">${t}</span>`).join('');
+
+function copyEmail(){
+  navigator.clipboard.writeText('arjunmohandas18@gmail.com');
+  const b=document.getElementById('copyBtn');
+  b.textContent='✓ Copied';
+  setTimeout(()=>b.textContent='Copy',2000);
+}
+</script>
