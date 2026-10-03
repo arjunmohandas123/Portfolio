@@ -3,613 +3,256 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Arjun Mohandas — Mechatronics & Robotics</title>
-<meta name="description" content="Arjun Mohandas — AI Driven Mechatronics and Robotics Student at Leibniz Universität Hannover"/>
+<title>Arjun Mohandas — Robotics & AI Engineer</title>
+<meta name="description" content="MSc AI-Driven Mechatronics and Robotics at Leibniz Universität Hannover. Data/Teleoperation Intern at NEURA Robotics. IEEE Published."/>
+<link rel="stylesheet" href="shared.css"/>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800;900&family=Share+Tech+Mono&family=Exo+2:wght@300;400;500;600&display=swap');
+/* ── HERO ── */
+.hero {
+  min-height: calc(100vh - var(--nav-h));
+  display: flex;align-items: center;
+  padding: clamp(40px,8vw,100px) clamp(20px,5vw,60px);
+  background: var(--white);
+  position: relative;overflow: hidden;
+}
+.hero::before {
+  content: '';position: absolute;
+  top: 0;right: 0;width: 55%;height: 100%;
+  background: var(--off);
+  clip-path: polygon(8% 0, 100% 0, 100% 100%, 0% 100%);
+  pointer-events: none;
+}
+.hero-inner {
+  max-width: 1080px;margin: 0 auto;width: 100%;
+  display: grid;grid-template-columns: 1fr 1fr;
+  gap: 60px;align-items: center;position: relative;z-index: 1;
+}
+.hero-left {}
+.status-pill {
+  display: inline-flex;align-items: center;gap: 8px;
+  padding: 7px 16px;background: var(--green-lt);
+  border: 1px solid rgba(22,163,74,.2);border-radius: 20px;
+  font-size: 12.5px;font-weight: 500;color: var(--green);
+  margin-bottom: 28px;
+}
+.hero-name {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(44px,7vw,84px);
+  font-weight: 900;line-height: 1;
+  letter-spacing: -.04em;color: var(--text);
+  margin-bottom: 6px;
+}
+.hero-name-sub {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(18px,3vw,32px);
+  font-weight: 400;color: var(--blue);
+  letter-spacing: -.01em;margin-bottom: 22px;
+}
+.hero-role {
+  font-size: 15px;color: var(--muted);
+  line-height: 1.75;margin-bottom: 36px;
+  max-width: 440px;
+}
+.hero-role strong{color:var(--sub);font-weight:600}
+.hero-btns { display: flex;gap: 12px;flex-wrap: wrap;margin-bottom: 40px; }
+.hero-meta {
+  display: flex;gap: 28px;flex-wrap: wrap;
+  padding-top: 28px;border-top: 1px solid var(--border);
+}
+.meta-item {}
+.meta-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 26px;font-weight: 700;color: var(--blue);
+  line-height: 1;margin-bottom: 3px;
+}
+.meta-label { font-size: 12px;color: var(--muted); }
 
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{background:#0a0f1e;color:#e2eeff;font-family:'Exo 2',sans-serif;overflow-x:hidden;font-size:16px;line-height:1.6}
-::-webkit-scrollbar{width:4px}::-webkit-scrollbar-track{background:#0a0f1e}::-webkit-scrollbar-thumb{background:#1a3a6c;border-radius:2px}
+/* Hero right — info panel */
+.hero-right {
+  display: flex;flex-direction: column;gap: 14px;
+}
+.info-panel {
+  background: var(--white);border: 1px solid var(--border);
+  border-radius: 14px;padding: 22px 24px;
+}
+.info-panel-title {
+  font-size: 11px;font-family: 'DM Mono', monospace;
+  color: var(--muted);letter-spacing: .1em;
+  margin-bottom: 14px;padding-bottom: 12px;
+  border-bottom: 1px solid var(--border);
+}
+.info-row {
+  display: flex;align-items: flex-start;gap: 12px;
+  padding: 9px 0;border-bottom: 1px solid var(--off);
+  font-size: 13.5px;
+}
+.info-row:last-child{border-bottom:none}
+.info-icon{font-size:15px;flex-shrink:0;width:20px;text-align:center;margin-top:1px}
+.info-val{color:var(--sub);font-weight:500;line-height:1.4}
+.info-val small{display:block;font-size:11.5px;color:var(--muted);font-weight:400;margin-top:1px}
+.info-val a{color:var(--blue);transition:opacity .18s}
+.info-val a:hover{opacity:.75}
 
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
-@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
-@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
-@keyframes rotateGear{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
-@keyframes rotateGearR{from{transform:rotate(0deg)}to{transform:rotate(-360deg)}}
-@keyframes eyeGlow{0%,100%{opacity:.7}50%{opacity:1}}
-@keyframes antennaBlink{0%,90%,100%{opacity:.3}95%{opacity:1}}
-@keyframes scanBeam{0%{transform:translateY(0);opacity:.5}100%{transform:translateY(80px);opacity:0}}
-@keyframes scanLine{0%{top:0;opacity:0}5%{opacity:1}95%{opacity:1}100%{top:100vh;opacity:0}}
-@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
-@keyframes slideInLeft{from{opacity:0;transform:translateX(-20px)}to{opacity:1;transform:translateX(0)}}
-@keyframes barGrow{from{width:0}to{width:var(--w)}}
+/* Quick nav cards */
+.qnav { display: grid;grid-template-columns: repeat(auto-fit,minmax(160px,1fr));gap: 12px; }
+.qnav-card {
+  background: var(--white);border: 1px solid var(--border);
+  border-radius: 12px;padding: 18px 16px;
+  display: flex;align-items: center;gap: 12px;
+  transition: all .22s;text-decoration: none;
+}
+.qnav-card:hover{box-shadow:var(--shadow-md);transform:translateY(-2px);border-color:var(--blue)}
+.qnav-card:hover .qnav-title{color:var(--blue)}
+.qnav-icon{font-size:20px;flex-shrink:0}
+.qnav-title{font-size:13px;font-weight:600;color:var(--text);margin-bottom:2px}
+.qnav-desc{font-size:11px;color:var(--muted)}
+.qnav-arrow{margin-left:auto;color:var(--border);font-size:14px;transition:all .22s}
+.qnav-card:hover .qnav-arrow{color:var(--blue);transform:translateX(2px)}
 
-.fade-up{animation:fadeUp .7s ease forwards;opacity:0}
-.delay-1{animation-delay:.1s}.delay-2{animation-delay:.2s}.delay-3{animation-delay:.3s}.delay-4{animation-delay:.4s}
-
-nav{position:sticky;top:0;z-index:200;background:rgba(10,15,30,.97);backdrop-filter:blur(12px);border-bottom:1px solid #1a3a6c;padding:0 40px;height:60px;display:flex;justify-content:space-between;align-items:center}
-.logo{font-family:'Orbitron',monospace;font-size:13px;letter-spacing:.2em;color:#4fc3f7;text-decoration:none}
-.nav-links{display:flex;gap:4px}
-.nav-links a{font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#7ba7d4;text-decoration:none;padding:7px 12px;border-radius:6px;transition:all .2s}
-.nav-links a:hover{color:#4fc3f7;background:rgba(79,195,247,.08)}
-.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px}
-.hamburger span{display:block;width:22px;height:2px;background:#4fc3f7;border-radius:2px;transition:all .3s}
-.mobile-menu{display:none;position:fixed;top:60px;left:0;right:0;background:rgba(10,15,30,.99);border-bottom:1px solid #1a3a6c;padding:12px 20px;z-index:199;flex-direction:column;gap:4px}
-.mobile-menu a{font-family:'Share Tech Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#7ba7d4;text-decoration:none;padding:11px 14px;border-radius:6px;transition:all .2s;display:block}
-.mobile-menu a:hover{color:#4fc3f7;background:rgba(79,195,247,.08)}
-.mobile-menu.open{display:flex}
-
-.scanline{position:fixed;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,rgba(79,195,247,.5),transparent);animation:scanLine 8s linear infinite;pointer-events:none;z-index:999}
-
-.section-inner{max-width:1100px;margin:0 auto}
-section{padding:90px 40px}
-.section-label{font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:#4fc3f7;opacity:.8;margin-bottom:10px}
-h2.section-title{font-family:'Orbitron',monospace;font-size:28px;font-weight:700;color:#e2eeff;margin-bottom:6px}
-.cyan{color:#4fc3f7}
-.section-divider{width:50px;height:2px;background:linear-gradient(90deg,#4fc3f7,#7c4dff);margin:14px 0 50px;border-radius:2px}
-.card{background:#111827;border:1px solid #1e3a5f;border-radius:14px;position:relative;overflow:hidden}
-.card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(79,195,247,.3),transparent)}
-
-#hero{min-height:100vh;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;background:#0a0f1e;padding:0 40px}
-.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(79,195,247,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(79,195,247,.025) 1px,transparent 1px);background-size:50px 50px;pointer-events:none}
-.hero-glow{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:600px;height:600px;background:radial-gradient(circle,rgba(79,195,247,.06) 0%,transparent 65%);pointer-events:none}
-.hero-inner{position:relative;z-index:2;display:flex;align-items:center;justify-content:space-between;max-width:1100px;width:100%;gap:48px;flex-wrap:wrap}
-.hero-text{flex:1;min-width:280px}
-.hero-robot{flex-shrink:0}
-.status-badge{display:inline-flex;align-items:center;gap:8px;padding:8px 16px;border:1px solid #1e3a5f;background:#111827;margin-bottom:24px;font-family:'Share Tech Mono',monospace;font-size:11px;letter-spacing:.12em;color:#7ba7d4;border-radius:20px}
-.dot-live{width:8px;height:8px;border-radius:50%;background:#4ade80;box-shadow:0 0 7px rgba(74,222,128,.8);animation:pulse 2s ease-in-out infinite;flex-shrink:0}
-.hero-name{font-family:'Orbitron',monospace;font-size:clamp(40px,7vw,82px);font-weight:900;letter-spacing:.06em;line-height:1;color:#e2eeff;margin-bottom:6px}
-.hero-sub{font-family:'Orbitron',monospace;font-size:clamp(14px,2.2vw,24px);font-weight:400;letter-spacing:.25em;color:#4fc3f7;margin-bottom:20px}
-#typed-wrap{font-family:'Share Tech Mono',monospace;font-size:14px;color:#7ba7d4;height:24px;display:flex;align-items:center;margin-bottom:10px}
-.cursor{display:inline-block;width:2px;height:14px;background:#4fc3f7;margin-left:2px;animation:blink .6s step-end infinite}
-.hero-chips{font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:.2em;color:#3a6090;margin-bottom:32px;text-transform:uppercase;line-height:1.8}
-.hero-btns{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:24px}
-.btn-primary{font-family:'Orbitron',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;padding:13px 28px;background:#4fc3f7;color:#0a0f1e;border:none;cursor:pointer;transition:all .3s;text-decoration:none;display:inline-flex;align-items:center;gap:8px;border-radius:8px;font-weight:700}
-.btn-primary:hover{background:#38b2e8;transform:translateY(-2px);box-shadow:0 6px 20px rgba(79,195,247,.3)}
-.btn-outline{font-family:'Orbitron',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;padding:13px 28px;border:1.5px solid #7c4dff;color:#7c4dff;background:transparent;cursor:pointer;transition:all .3s;text-decoration:none;display:inline-flex;align-items:center;gap:8px;border-radius:8px}
-.btn-outline:hover{background:rgba(124,77,255,.12);transform:translateY(-2px)}
-.ieee-pill{font-family:'Share Tech Mono',monospace;font-size:9px;color:#3a6090;border:1px solid #1e3a5f;padding:7px 16px;display:inline-block;letter-spacing:.12em;border-radius:20px;background:#111827}
-
-#projects{background:#0d1322}
-.proj-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:24px}
-.proj-card{padding:28px;border-radius:14px;transition:all .35s}
-.proj-card:hover{border-color:#2a5a8f;transform:translateY(-4px);box-shadow:0 12px 40px rgba(79,195,247,.08)}
-.proj-header{display:flex;align-items:flex-start;gap:14px;margin-bottom:18px}
-.proj-icon{width:46px;height:46px;border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.proj-meta{flex:1}
-.proj-top-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:4px}
-.proj-num{font-family:'Share Tech Mono',monospace;font-size:9px;color:#4fc3f7;opacity:.5}
-.proj-badge{font-family:'Share Tech Mono',monospace;font-size:9px;padding:3px 9px;border-radius:20px}
-.proj-title{font-family:'Orbitron',monospace;font-size:13px;font-weight:700;color:#e2eeff;letter-spacing:.04em;margin-bottom:3px;line-height:1.4}
-.proj-type{font-family:'Share Tech Mono',monospace;font-size:9px;letter-spacing:.15em;text-transform:uppercase}
-.proj-period{font-family:'Share Tech Mono',monospace;font-size:10px;color:#3a6090;margin-bottom:12px;margin-top:4px}
-.proj-desc{font-size:13px;color:#7ba7d4;line-height:1.75;margin-bottom:16px}
-.proj-highlights li{font-size:12px;color:#4a6a8a;margin-bottom:6px;list-style:none;padding-left:16px;position:relative}
-.proj-highlights li::before{content:'→';position:absolute;left:0;font-size:11px;color:#4fc3f7;opacity:.6}
-.tech-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
-.tech-tag{font-family:'Share Tech Mono',monospace;font-size:9px;padding:4px 10px;border:1px solid #1e3a5f;color:#4a6a8a;background:rgba(30,58,95,.2);border-radius:5px}
-
-#skills{background:#0a0f1e}
-.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-bottom:16px}
-.skill-card{padding:26px;border-radius:14px}
-.skill-cat-header{display:flex;align-items:center;gap:10px;margin-bottom:24px}
-.skill-cat-icon{width:30px;height:30px;border-radius:8px;display:flex;align-items:center;justify-content:center}
-.skill-cat-name{font-family:'Orbitron',monospace;font-size:10px;letter-spacing:.07em;color:#e2eeff;text-transform:uppercase}
-.skill-row{margin-bottom:16px}
-.skill-name-row{display:flex;justify-content:space-between;margin-bottom:6px;align-items:center}
-.skill-name{font-family:'Share Tech Mono',monospace;font-size:12px;color:#7ba7d4}
-.skill-right{display:flex;align-items:center;gap:6px}
-.skill-pct{font-family:'Share Tech Mono',monospace;font-size:10px;opacity:.8}
-.upskill-tag{font-family:'Share Tech Mono',monospace;font-size:8px;color:#ffb300;background:rgba(255,179,0,.1);border:1px solid rgba(255,179,0,.25);padding:1px 6px;border-radius:3px}
-.bar-track{height:4px;background:#1e3a5f;border-radius:2px;overflow:hidden}
-.bar-fill{height:100%;border-radius:2px}
-.tools-card{padding:24px;border-radius:14px;margin-bottom:14px}
-.tools-grid{display:flex;flex-wrap:wrap;gap:8px}
-.tool-pill{font-family:'Share Tech Mono',monospace;font-size:10px;padding:6px 14px;border:1px solid #1e3a5f;color:#7ba7d4;background:#111827;transition:all .2s;cursor:default;border-radius:20px}
-.tool-pill:hover{border-color:rgba(79,195,247,.4);color:#4fc3f7;background:rgba(79,195,247,.05)}
-
-#experience{background:#0d1322}
-#education{background:#0a0f1e}
-
-.timeline{position:relative;max-width:740px;margin:0 auto}
-.timeline::before{content:'';position:absolute;left:20px;top:0;bottom:0;width:2px;background:linear-gradient(180deg,#4fc3f7,#7c4dff,rgba(79,195,247,.1));border-radius:2px}
-.tl-item{position:relative;padding-left:64px;margin-bottom:24px;animation:slideInLeft .6s ease forwards;opacity:0}
-.tl-item:nth-child(1){animation-delay:.1s}
-.tl-item:nth-child(2){animation-delay:.25s}
-.tl-item:nth-child(3){animation-delay:.4s}
-.tl-node{position:absolute;left:4px;top:6px;width:34px;height:34px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:14px;transition:all .3s;box-shadow:0 2px 10px rgba(0,0,0,.3)}
-.tl-item:hover .tl-node{transform:scale(1.1)}
-.tl-card{padding:22px;border-radius:12px;transition:all .3s}
-.tl-item:hover .tl-card{transform:translateX(4px)}
-.tl-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;flex-wrap:wrap;gap:6px}
-.tl-period{font-family:'Share Tech Mono',monospace;font-size:10px;color:#3a6090}
-.tl-badge{font-family:'Share Tech Mono',monospace;font-size:9px;letter-spacing:.1em;padding:3px 10px;border-radius:20px;text-transform:uppercase}
-.tl-title{font-family:'Orbitron',monospace;font-size:13px;font-weight:700;color:#e2eeff;letter-spacing:.04em;margin-bottom:3px}
-.tl-org{font-size:13px;color:#7ba7d4;margin-bottom:2px}
-.tl-loc{font-family:'Share Tech Mono',monospace;font-size:10px;color:#3a6090;margin-bottom:14px}
-.tl-list li{font-size:12px;color:#4a6a8a;list-style:none;padding-left:16px;position:relative;margin-bottom:6px}
-.tl-list li::before{content:'→';position:absolute;left:0;font-size:11px;color:#4fc3f7;opacity:.5}
-
-#languages{background:#0d1322}
-.lang-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;max-width:900px;margin:0 auto}
-.lang-big-card{padding:24px 28px;border-radius:14px;transition:all .3s}
-.lang-big-card:hover{transform:translateY(-3px);border-color:#2a5a8f}
-.lang-flag{font-size:28px;margin-bottom:12px}
-.lang-name-big{font-family:'Orbitron',monospace;font-size:14px;font-weight:700;color:#e2eeff;margin-bottom:4px}
-.lang-level-label{font-family:'Share Tech Mono',monospace;font-size:11px;letter-spacing:.15em;text-transform:uppercase;margin-bottom:16px}
-.lang-bar-big-track{height:6px;background:#1e3a5f;border-radius:3px;overflow:hidden;margin-bottom:8px}
-.lang-bar-big-fill{height:100%;border-radius:3px}
-.lang-desc{font-family:'Share Tech Mono',monospace;font-size:10px;color:#3a6090;letter-spacing:.08em}
-
-#contact{background:#0a0f1e}
-.contact-wrap{max-width:640px;margin:0 auto;text-align:center}
-.contact-desc{font-size:14px;color:#7ba7d4;line-height:1.85;margin-bottom:36px}
-.contact-card{padding:32px;margin-bottom:16px;border-radius:14px}
-.avail-pill{display:inline-flex;align-items:center;gap:8px;margin-bottom:24px;padding:8px 18px;border:1px solid #1e3a5f;border-radius:20px;background:#0d1322}
-.avail-text{font-family:'Share Tech Mono',monospace;font-size:11px;color:#7ba7d4}
-.email-row{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;margin-bottom:20px}
-.email-display{font-family:'Share Tech Mono',monospace;font-size:13px;color:#4fc3f7;padding:11px 20px;border:1px solid #1e3a5f;background:#0a0f1e;border-radius:8px;letter-spacing:.05em}
-.copy-btn{font-family:'Orbitron',monospace;font-size:9px;letter-spacing:.12em;padding:11px 20px;background:#4fc3f7;color:#0a0f1e;border:none;cursor:pointer;text-transform:uppercase;transition:all .3s;border-radius:8px;font-weight:700}
-.copy-btn:hover{background:#38b2e8;transform:translateY(-1px)}
-.social-links{display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap}
-.social-link{font-family:'Share Tech Mono',monospace;font-size:12px;color:#7ba7d4;text-decoration:none;transition:all .2s;padding:8px 14px;border-radius:6px;display:flex;align-items:center;gap:6px}
-.social-link:hover{color:#4fc3f7;background:rgba(79,195,247,.08)}
-.social-sep{color:#1e3a5f;font-size:18px}
-.regions-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:16px}
-.region-chip{font-family:'Share Tech Mono',monospace;font-size:10px;color:#3a6090;padding:9px 8px;border:1px solid #1a2d4a;background:#0d1322;text-align:center;border-radius:8px;transition:all .2s}
-.region-chip:hover{color:#4fc3f7;border-color:#1e3a5f}
-
-footer{padding:28px 40px;border-top:1px solid #1e3a5f;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;background:#0a0f1e}
-.foot-text{font-family:'Share Tech Mono',monospace;font-size:10px;color:#3a6090}
-.foot-logo{font-family:'Orbitron',monospace;font-size:11px;color:#3a6090;letter-spacing:.2em}
-
-@media(max-width:768px){
-  nav{padding:0 20px}.nav-links{display:none}.hamburger{display:flex}
-  section{padding:60px 20px}
-  .hero-inner{justify-content:center;text-align:center}.hero-robot{display:none}.hero-btns{justify-content:center}
-  h2.section-title{font-size:22px}
-  .regions-grid{grid-template-columns:repeat(2,1fr)}
-  footer{padding:20px;flex-direction:column;text-align:center}
-  .timeline::before{left:16px}.tl-item{padding-left:52px}
+@media(max-width:900px){
+  .hero::before{display:none}
+  .hero-inner{grid-template-columns:1fr}
+  .hero-right{order:-1}
+  .info-panel{max-width:100%}
+  .hero-role{max-width:100%}
 }
 @media(max-width:480px){
-  .email-display{font-size:11px}.proj-grid{grid-template-columns:1fr}
-  .skills-grid{grid-template-columns:1fr}.lang-cards{grid-template-columns:1fr}
+  .hero-meta{gap:20px}
+  .qnav{grid-template-columns:1fr 1fr}
 }
 </style>
-<!-- Vercel Web Analytics -->
-<script>
-  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
-</script>
-<script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body>
 
-<div class="scanline"></div>
-
 <nav>
-  <a href="#hero" class="logo">AM<span style="color:#3a6090">.exe</span></a>
+  <a href="index.html" class="logo">Arjun <span>M.</span></a>
   <div class="nav-links">
-    <a href="#hero">About</a>
-    <a href="#projects">Projects</a>
-    <a href="#skills">Skills</a>
-    <a href="#experience">Experience</a>
-    <a href="#education">Education</a>
-    <a href="#languages">Languages</a>
-    <a href="#contact">Contact</a>
+    <a href="index.html">Home</a>
+    <a href="projects.html">Projects</a>
+    <a href="skills.html">Skills</a>
+    <a href="experience.html">Experience</a>
+    <a href="education.html">Education</a>
+    <a href="contact.html" class="nav-cta">Contact</a>
   </div>
-  <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+  <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
     <span></span><span></span><span></span>
-  </div>
+  </button>
 </nav>
 <div class="mobile-menu" id="mobileMenu">
-  <a href="#hero" onclick="closeMenu()">About</a>
-  <a href="#projects" onclick="closeMenu()">Projects</a>
-  <a href="#skills" onclick="closeMenu()">Skills</a>
-  <a href="#experience" onclick="closeMenu()">Experience</a>
-  <a href="#education" onclick="closeMenu()">Education</a>
-  <a href="#languages" onclick="closeMenu()">Languages</a>
-  <a href="#contact" onclick="closeMenu()">Contact</a>
+  <a href="index.html">Home</a>
+  <a href="projects.html">Projects</a>
+  <a href="skills.html">Skills</a>
+  <a href="experience.html">Experience</a>
+  <a href="education.html">Education</a>
+  <a href="contact.html" class="mob-cta">Contact</a>
 </div>
 
-<section id="hero">
-  <div class="hero-grid"></div>
-  <div class="hero-glow"></div>
+<section class="hero">
   <div class="hero-inner">
-    <div class="hero-text fade-up">
-      <div class="status-badge"><div class="dot-live"></div>MSc Student · Leibniz Universität Hannover</div>
-      <div class="hero-name">ARJUN</div>
-      <div class="hero-sub">MOHANDAS</div>
-      <div id="typed-wrap"><span id="typed"></span><span class="cursor"></span></div>
-      <div class="hero-chips">Robotics · Automation · Embedded Systems · AI</div>
+    <div class="hero-left">
+      <div class="status-pill"><div class="dot-live"></div>Available for Werkstudent roles</div>
+      <div class="hero-name">Arjun<br>Mohandas</div>
+      <div class="hero-name-sub">Robotics & AI Engineer</div>
+      <p class="hero-role">
+        MSc student in <strong>AI-Driven Mechatronics and Robotics</strong> at Leibniz Universität Hannover.
+        Currently a <strong>Data/Teleoperation Intern at NEURA Robotics</strong>, building Physical AI systems
+        for humanoid robots. IEEE-published researcher in ROS/SLAM autonomous navigation.
+      </p>
       <div class="hero-btns">
-        <a href="#projects" class="btn-primary">View Projects →</a>
-        <a href="#contact" class="btn-outline">Contact Me</a>
+        <a href="projects.html" class="btn btn-blue">View Projects</a>
+        <a href="contact.html" class="btn btn-ghost">Get in Touch</a>
       </div>
-      <div class="ieee-pill">IEEE Published · ICKECS 2024 · ROS · SLAM</div>
+      <div class="hero-meta">
+        <div class="meta-item">
+          <div class="meta-num">3</div>
+          <div class="meta-label">Projects Built</div>
+        </div>
+        <div class="meta-item">
+          <div class="meta-num">IEEE</div>
+          <div class="meta-label">Published</div>
+        </div>
+        <div class="meta-item">
+          <div class="meta-num">15+</div>
+          <div class="meta-label">Students Mentored</div>
+        </div>
+        <div class="meta-item">
+          <div class="meta-num">3</div>
+          <div class="meta-label">Languages</div>
+        </div>
+      </div>
     </div>
-    <div class="hero-robot">
-      <svg width="220" height="300" viewBox="0 0 220 300" style="animation:float 5s ease-in-out infinite" xmlns="http://www.w3.org/2000/svg">
-        <line x1="110" y1="18" x2="110" y2="42" stroke="#4fc3f7" stroke-width="2"/>
-        <circle cx="110" cy="12" r="6" fill="#4fc3f7" style="animation:antennaBlink 3s ease-in-out infinite"/>
-        <rect x="72" y="42" width="76" height="62" rx="12" fill="#111827" stroke="#4fc3f7" stroke-width="1.5"/>
-        <rect x="85" y="58" width="18" height="12" rx="4" fill="#4fc3f7" style="animation:eyeGlow 2s ease-in-out infinite"/>
-        <rect x="117" y="58" width="18" height="12" rx="4" fill="#4fc3f7" style="animation:eyeGlow 2s ease-in-out infinite;animation-delay:.3s"/>
-        <rect x="89" y="61" width="4" height="3" rx="1" fill="white" opacity=".6"/>
-        <rect x="121" y="61" width="4" height="3" rx="1" fill="white" opacity=".6"/>
-        <rect x="88" y="80" width="44" height="10" rx="3" fill="#0d1322" stroke="#1e3a5f" stroke-width="1"/>
-        <rect x="91" y="83" width="6" height="4" rx="1" fill="#4fc3f7" opacity=".7"/>
-        <rect x="100" y="83" width="6" height="4" rx="1" fill="#4fc3f7" opacity=".7"/>
-        <rect x="109" y="83" width="6" height="4" rx="1" fill="#4fc3f7" opacity=".7"/>
-        <rect x="118" y="83" width="6" height="4" rx="1" fill="#4fc3f7" opacity=".7"/>
-        <rect x="102" y="104" width="16" height="12" rx="3" fill="#1e3a5f"/>
-        <rect x="58" y="116" width="104" height="88" rx="14" fill="#111827" stroke="#1e3a5f" stroke-width="1.5"/>
-        <rect x="74" y="128" width="72" height="48" rx="8" fill="#0d1322" stroke="#4fc3f7" stroke-width="1"/>
-        <rect x="78" y="132" width="64" height="40" rx="6" fill="#0a1628" opacity=".8"/>
-        <line x1="82" y1="140" x2="138" y2="140" stroke="#4fc3f7" stroke-width=".8" opacity=".4"/>
-        <line x1="82" y1="148" x2="128" y2="148" stroke="#4fc3f7" stroke-width=".8" opacity=".3"/>
-        <line x1="82" y1="156" x2="134" y2="156" stroke="#4fc3f7" stroke-width=".8" opacity=".4"/>
-        <line x1="82" y1="164" x2="120" y2="164" stroke="#7c4dff" stroke-width=".8" opacity=".4"/>
-        <rect x="78" y="132" width="64" height="3" rx="1" fill="#4fc3f7" opacity=".15" style="animation:scanBeam 2.5s ease-in-out infinite"/>
-        <circle cx="68" cy="134" r="4" fill="#7c4dff" opacity=".7"/>
-        <circle cx="68" cy="146" r="4" fill="#4fc3f7" opacity=".7"/>
-        <circle cx="68" cy="158" r="4" fill="#7c4dff" opacity=".5"/>
-        <circle cx="152" cy="134" r="4" fill="#4fc3f7" opacity=".7"/>
-        <circle cx="152" cy="146" r="4" fill="#7c4dff" opacity=".7"/>
-        <circle cx="152" cy="158" r="4" fill="#4fc3f7" opacity=".5"/>
-        <rect x="22" y="120" width="34" height="22" rx="8" fill="#111827" stroke="#1e3a5f" stroke-width="1.5"/>
-        <rect x="18" y="142" width="26" height="42" rx="8" fill="#111827" stroke="#1e3a5f" stroke-width="1.5"/>
-        <rect x="20" y="184" width="22" height="16" rx="5" fill="#1e3a5f"/>
-        <rect x="22" y="186" width="4" height="10" rx="2" fill="#4fc3f7" opacity=".5"/>
-        <rect x="28" y="186" width="4" height="10" rx="2" fill="#4fc3f7" opacity=".5"/>
-        <rect x="34" y="186" width="4" height="10" rx="2" fill="#4fc3f7" opacity=".5"/>
-        <rect x="164" y="120" width="34" height="22" rx="8" fill="#111827" stroke="#1e3a5f" stroke-width="1.5"/>
-        <rect x="176" y="142" width="26" height="42" rx="8" fill="#111827" stroke="#1e3a5f" stroke-width="1.5"/>
-        <rect x="178" y="184" width="22" height="16" rx="5" fill="#1e3a5f"/>
-        <rect x="180" y="186" width="4" height="10" rx="2" fill="#4fc3f7" opacity=".5"/>
-        <rect x="186" y="186" width="4" height="10" rx="2" fill="#4fc3f7" opacity=".5"/>
-        <rect x="192" y="186" width="4" height="10" rx="2" fill="#4fc3f7" opacity=".5"/>
-        <rect x="72" y="204" width="76" height="14" rx="6" fill="#1e3a5f"/>
-        <rect x="74" y="218" width="36" height="52" rx="10" fill="#111827" stroke="#1e3a5f" stroke-width="1.5"/>
-        <rect x="70" y="268" width="44" height="16" rx="7" fill="#1e3a5f"/>
-        <rect x="110" y="218" width="36" height="52" rx="10" fill="#111827" stroke="#1e3a5f" stroke-width="1.5"/>
-        <rect x="106" y="268" width="44" height="16" rx="7" fill="#1e3a5f"/>
-        <g transform="translate(32,126)" style="transform-origin:8px 8px;animation:rotateGear 6s linear infinite;transform-box:fill-box">
-          <circle cx="8" cy="8" r="7" fill="none" stroke="#4fc3f7" stroke-width="1.2" opacity=".5"/>
-          <circle cx="8" cy="8" r="3" fill="#4fc3f7" opacity=".4"/>
-          <line x1="8" y1="1" x2="8" y2="4" stroke="#4fc3f7" stroke-width="1.5" opacity=".5"/>
-          <line x1="8" y1="12" x2="8" y2="15" stroke="#4fc3f7" stroke-width="1.5" opacity=".5"/>
-          <line x1="1" y1="8" x2="4" y2="8" stroke="#4fc3f7" stroke-width="1.5" opacity=".5"/>
-          <line x1="12" y1="8" x2="15" y2="8" stroke="#4fc3f7" stroke-width="1.5" opacity=".5"/>
-        </g>
-        <g transform="translate(174,126)" style="transform-origin:8px 8px;animation:rotateGearR 6s linear infinite;transform-box:fill-box">
-          <circle cx="8" cy="8" r="7" fill="none" stroke="#7c4dff" stroke-width="1.2" opacity=".5"/>
-          <circle cx="8" cy="8" r="3" fill="#7c4dff" opacity=".4"/>
-          <line x1="8" y1="1" x2="8" y2="4" stroke="#7c4dff" stroke-width="1.5" opacity=".5"/>
-          <line x1="8" y1="12" x2="8" y2="15" stroke="#7c4dff" stroke-width="1.5" opacity=".5"/>
-          <line x1="1" y1="8" x2="4" y2="8" stroke="#7c4dff" stroke-width="1.5" opacity=".5"/>
-          <line x1="12" y1="8" x2="15" y2="8" stroke="#7c4dff" stroke-width="1.5" opacity=".5"/>
-        </g>
-      </svg>
-    </div>
-  </div>
-</section>
 
-<section id="projects">
-  <div class="section-inner">
-    <div class="section-label">// system.projects</div>
-    <h2 class="section-title">Featured <span class="cyan">Projects</span></h2>
-    <div class="section-divider"></div>
-    <div class="proj-grid">
-      <div class="card proj-card fade-up delay-1">
-        <div class="proj-header">
-          <div class="proj-icon" style="background:rgba(79,195,247,.1);border:1px solid rgba(79,195,247,.2)">
-            <svg width="26" height="26" viewBox="0 0 26 26" fill="none">
-              <circle cx="13" cy="5.5" r="3.5" stroke="#4fc3f7" stroke-width="1.5"/>
-              <rect x="9" y="10" width="8" height="8" rx="2" stroke="#4fc3f7" stroke-width="1.5"/>
-              <line x1="9" y1="12.5" x2="5" y2="16.5" stroke="#4fc3f7" stroke-width="1.5" stroke-linecap="round"/>
-              <line x1="17" y1="12.5" x2="21" y2="16.5" stroke="#4fc3f7" stroke-width="1.5" stroke-linecap="round"/>
-              <line x1="10.5" y1="18" x2="9" y2="23" stroke="#4fc3f7" stroke-width="1.5" stroke-linecap="round"/>
-              <line x1="15.5" y1="18" x2="17" y2="23" stroke="#4fc3f7" stroke-width="1.5" stroke-linecap="round"/>
-            </svg>
-          </div>
-          <div class="proj-meta">
-            <div class="proj-top-row">
-              <span class="proj-num">[01]</span>
-              <span class="proj-badge" style="background:rgba(79,195,247,.08);border:1px solid rgba(79,195,247,.3);color:#4fc3f7">Final Year</span>
-            </div>
-            <div class="proj-title">Medical Humanoid Robot</div>
-            <div class="proj-type" style="color:#4fc3f7">B.Tech Main Project</div>
-            <div class="proj-period">Aug 2023 – May 2024</div>
+    <div class="hero-right">
+      <div class="info-panel">
+        <div class="info-panel-title">Current Status</div>
+        <div class="info-row">
+          <div class="info-icon">⚡</div>
+          <div class="info-val">Data/Teleoperation Intern
+            <small>NEURA Robotics · Sep 2026 – Present</small>
           </div>
         </div>
-        <p class="proj-desc">Designed and developed an intelligent humanoid robot integrating sensors, actuators, and embedded controllers with AI-based communication and robotic control features.</p>
-        <ul class="proj-highlights">
-          <li>Integrated sensors, actuators, and embedded controllers</li>
-          <li>AI-based communication and robotic control features</li>
-          <li>System integration, hardware testing, and validation</li>
-        </ul>
-        <div class="tech-tags">
-          <span class="tech-tag">Embedded C</span><span class="tech-tag">AI/ML</span><span class="tech-tag">Sensor Fusion</span><span class="tech-tag">Python</span><span class="tech-tag">ROS</span><span class="tech-tag">Arduino</span>
+        <div class="info-row">
+          <div class="info-icon">🎓</div>
+          <div class="info-val">MSc AI-Driven Mechatronics & Robotics
+            <small>Leibniz Universität Hannover · 2024–2027</small>
+          </div>
+        </div>
+        <div class="info-row">
+          <div class="info-icon">📍</div>
+          <div class="info-val">Hannover, Germany
+            <small>Open to roles across Lower Saxony & Hamburg</small>
+          </div>
+        </div>
+        <div class="info-row">
+          <div class="info-icon">✉️</div>
+          <div class="info-val">
+            <a href="mailto:arjunmohandas18@gmail.com">arjunmohandas18@gmail.com</a>
+          </div>
+        </div>
+        <div class="info-row">
+          <div class="info-icon">🔗</div>
+          <div class="info-val">
+            <a href="https://www.linkedin.com/in/arjun-m123/" target="_blank" rel="noopener">linkedin.com/in/arjun-m123</a>
+          </div>
         </div>
       </div>
-      <div class="card proj-card fade-up delay-2">
-        <div class="proj-header">
-          <div class="proj-icon" style="background:rgba(124,77,255,.1);border:1px solid rgba(124,77,255,.2)">
-            <svg width="26" height="26" viewBox="0 0 26 26" fill="none">
-              <circle cx="13" cy="15" r="7" stroke="#7c4dff" stroke-width="1.5"/>
-              <circle cx="13" cy="15" r="3" fill="#7c4dff" opacity=".4"/>
-              <path d="M13 5 L13 2" stroke="#7c4dff" stroke-width="1.5" stroke-linecap="round"/>
-              <path d="M20 8 L22 6" stroke="#7c4dff" stroke-width="1.5" stroke-linecap="round"/>
-              <path d="M6 8 L4 6" stroke="#7c4dff" stroke-width="1.5" stroke-linecap="round"/>
-              <path d="M8 15 Q10 10 13 8 Q16 10 18 15" stroke="#7c4dff" stroke-width="1" fill="none" opacity=".5"/>
-            </svg>
-          </div>
-          <div class="proj-meta">
-            <div class="proj-top-row">
-              <span class="proj-num">[02]</span>
-              <span class="proj-badge" style="background:rgba(124,77,255,.08);border:1px solid rgba(124,77,255,.3);color:#7c4dff">IEEE Published</span>
-            </div>
-            <div class="proj-title">Robot Vacuum Cleaner using SLAM and ROS</div>
-            <div class="proj-type" style="color:#7c4dff">Mini Project · ICKECS 2024</div>
-            <div class="proj-period">Mar 2023 – Jun 2023</div>
-          </div>
-        </div>
-        <p class="proj-desc">ROS-based autonomous vacuum robot using SLAM for navigation, path planning, and obstacle avoidance. Research peer-reviewed and published at IEEE ICKECS 2024.</p>
-        <ul class="proj-highlights">
-          <li>Simultaneous Localisation and Mapping (SLAM) pipeline</li>
-          <li>Path planning and autonomous obstacle avoidance</li>
-          <li>Simulated and tested in real-world environments</li>
-        </ul>
-        <div class="tech-tags">
-          <span class="tech-tag">ROS</span><span class="tech-tag">SLAM</span><span class="tech-tag">Python</span><span class="tech-tag">C++</span><span class="tech-tag">Arduino</span><span class="tech-tag">Raspberry Pi</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
-<section id="skills">
-  <div class="section-inner">
-    <div class="section-label">// core.capabilities</div>
-    <h2 class="section-title">Technical <span class="cyan">Skills</span></h2>
-    <div class="section-divider"></div>
-    <div class="skills-grid">
-      <div class="card skill-card fade-up delay-1">
-        <div class="skill-cat-header">
-          <div class="skill-cat-icon" style="background:rgba(79,195,247,.1)"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6" stroke="#4fc3f7" stroke-width="1.5"/><circle cx="8" cy="8" r="2" fill="#4fc3f7" opacity=".5"/><line x1="8" y1="2" x2="8" y2="5" stroke="#4fc3f7" stroke-width="1.5"/><line x1="8" y1="11" x2="8" y2="14" stroke="#4fc3f7" stroke-width="1.5"/><line x1="2" y1="8" x2="5" y2="8" stroke="#4fc3f7" stroke-width="1.5"/><line x1="11" y1="8" x2="14" y2="8" stroke="#4fc3f7" stroke-width="1.5"/></svg></div>
-          <span class="skill-cat-name">Robotics & Automation</span>
-        </div>
-        <div id="skills1"></div>
+      <div class="qnav">
+        <a href="projects.html" class="qnav-card">
+          <span class="qnav-icon">🤖</span>
+          <div><div class="qnav-title">Projects</div><div class="qnav-desc">3 builds</div></div>
+          <span class="qnav-arrow">→</span>
+        </a>
+        <a href="skills.html" class="qnav-card">
+          <span class="qnav-icon">⚙️</span>
+          <div><div class="qnav-title">Skills</div><div class="qnav-desc">Full stack</div></div>
+          <span class="qnav-arrow">→</span>
+        </a>
+        <a href="experience.html" class="qnav-card">
+          <span class="qnav-icon">💼</span>
+          <div><div class="qnav-title">Experience</div><div class="qnav-desc">3 roles</div></div>
+          <span class="qnav-arrow">→</span>
+        </a>
+        <a href="education.html" class="qnav-card">
+          <span class="qnav-icon">🎓</span>
+          <div><div class="qnav-title">Education</div><div class="qnav-desc">LUH · KTU</div></div>
+          <span class="qnav-arrow">→</span>
+        </a>
       </div>
-      <div class="card skill-card fade-up delay-2">
-        <div class="skill-cat-header">
-          <div class="skill-cat-icon" style="background:rgba(124,77,255,.1)"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="2" y="4" width="12" height="8" rx="2" stroke="#7c4dff" stroke-width="1.5"/><path d="M5 7 L7 9 L5 11" stroke="#7c4dff" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/><line x1="9" y1="9" x2="11" y2="9" stroke="#7c4dff" stroke-width="1.2" stroke-linecap="round"/></svg></div>
-          <span class="skill-cat-name">Programming</span>
-        </div>
-        <div id="skills2"></div>
-      </div>
-      <div class="card skill-card fade-up delay-3">
-        <div class="skill-cat-header">
-          <div class="skill-cat-icon" style="background:rgba(255,179,0,.08)"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="3" y="6" width="10" height="7" rx="2" stroke="#ffb300" stroke-width="1.5"/><path d="M6 6V5a2 2 0 014 0v1" stroke="#ffb300" stroke-width="1.5"/><circle cx="8" cy="10" r="1.2" fill="#ffb300" opacity=".6"/></svg></div>
-          <span class="skill-cat-name">Hardware & Embedded</span>
-        </div>
-        <div id="skills3"></div>
-      </div>
-    </div>
-    <div class="card tools-card fade-up delay-4">
-      <div class="section-label" style="margin-bottom:14px">// tools & environment</div>
-      <div class="tools-grid" id="tools"></div>
-    </div>
-  </div>
-</section>
-
-<section id="experience">
-  <div class="section-inner">
-    <div class="section-label">// work.history</div>
-    <h2 class="section-title">Professional <span class="cyan">Experience</span></h2>
-    <div class="section-divider"></div>
-    <div class="timeline">
-      <div class="tl-item">
-        <div class="tl-node" style="background:rgba(79,195,247,.1);border:1.5px solid rgba(79,195,247,.4);color:#4fc3f7">◆</div>
-        <div class="card tl-card">
-          <div class="tl-top">
-            <span class="tl-period">Aug 2024 – Feb 2025</span>
-            <span class="tl-badge" style="background:rgba(79,195,247,.08);border:1px solid rgba(79,195,247,.25);color:#4fc3f7">Mentor</span>
-          </div>
-          <div class="tl-title">Junior Mentor</div>
-          <div class="tl-org">HowNWhy Education</div>
-          <div class="tl-loc">📍 India</div>
-          <ul class="tl-list">
-            <li>Conducted hands-on training in robotics, embedded systems, and sensor integration using Arduino and Raspberry Pi</li>
-            <li>Guided students in designing and testing robotic prototypes and automation projects</li>
-            <li>Assisted in debugging hardware circuits and improving system reliability</li>
-            <li>Introduced AI fundamentals and robotics applications through practical demonstrations</li>
-          </ul>
-        </div>
-      </div>
-      <div class="tl-item">
-        <div class="tl-node" style="background:rgba(124,77,255,.1);border:1.5px solid rgba(124,77,255,.4);color:#7c4dff">⚙</div>
-        <div class="card tl-card">
-          <div class="tl-top">
-            <span class="tl-period">Feb 2024 – Apr 2024</span>
-            <span class="tl-badge" style="background:rgba(124,77,255,.08);border:1px solid rgba(124,77,255,.3);color:#7c4dff">Internship</span>
-          </div>
-          <div class="tl-title">Project Intern</div>
-          <div class="tl-org">Sunlux Technovations</div>
-          <div class="tl-loc">📍 India</div>
-          <ul class="tl-list">
-            <li>Developed and tested embedded control circuits for SUNDOOR door control systems</li>
-            <li>Performed data acquisition, hardware validation, and system testing using LabVIEW</li>
-            <li>Assisted in prototype development, integration, and performance optimisation</li>
-            <li>Troubleshot embedded hardware and improved system stability</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="education">
-  <div class="section-inner">
-    <div class="section-label">// academic.background</div>
-    <h2 class="section-title">Education</h2>
-    <div class="section-divider"></div>
-    <div class="timeline">
-      <div class="tl-item">
-        <div class="tl-node" style="background:rgba(79,195,247,.1);border:1.5px solid rgba(79,195,247,.4);color:#4fc3f7">◈</div>
-        <div class="card tl-card">
-          <div class="tl-top">
-            <span class="tl-period">2024 – Ongoing</span>
-            <span class="tl-badge" style="background:rgba(79,195,247,.08);border:1px solid rgba(79,195,247,.25);color:#4fc3f7">Current</span>
-          </div>
-          <div class="tl-title">MSc AI-Driven Mechatronics and Robotics</div>
-          <div class="tl-org">Leibniz University Hannover</div>
-          <div class="tl-loc">📍 Hannover, Germany</div>
-          <ul class="tl-list">
-            <li>Specialisation in robotics, automation, and AI integration</li>
-            <li>Final Year Project: Medical Humanoid Robot with AI communication</li>
-            <li>Research areas: embedded systems, computer vision, ROS2</li>
-          </ul>
-        </div>
-      </div>
-      <div class="tl-item">
-        <div class="tl-node" style="background:rgba(124,77,255,.1);border:1.5px solid rgba(124,77,255,.4);color:#7c4dff">🎓</div>
-        <div class="card tl-card">
-          <div class="tl-top">
-            <span class="tl-period">Aug 2020 – Jun 2024</span>
-            <span class="tl-badge" style="background:rgba(124,77,255,.08);border:1px solid rgba(124,77,255,.3);color:#7c4dff">Completed</span>
-          </div>
-          <div class="tl-title">B.Tech (Hons) in Robotics and Automation</div>
-          <div class="tl-org">APJ Abdul Kalam Technological University</div>
-          <div class="tl-loc">📍 India · GPA: 1.8 (German Scale)</div>
-          <ul class="tl-list">
-            <li>Robotics Fundamentals — kinematics, dynamics, and control of robotic systems</li>
-            <li>Automation Systems — industrial automation, PLC, SCADA, and control systems</li>
-            <li>Embedded Systems — microcontrollers, Arduino, Raspberry Pi, and real-time systems</li>
-            <li>Main Project: Medical Humanoid Robot</li>
-          </ul>
-        </div>
-      </div>
-      <div class="tl-item">
-        <div class="tl-node" style="background:rgba(255,179,0,.08);border:1.5px solid rgba(255,179,0,.4);color:#ffb300">★</div>
-        <div class="card tl-card">
-          <div class="tl-top">
-            <span class="tl-period">2020 – 2024</span>
-            <span class="tl-badge" style="background:rgba(255,179,0,.07);border:1px solid rgba(255,179,0,.3);color:#ffb300">Achievements</span>
-          </div>
-          <div class="tl-title">Extra Curriculars & Honours</div>
-          <div class="tl-org">APJ Abdul Kalam Technological University</div>
-          <div class="tl-loc">📍 India</div>
-          <ul class="tl-list">
-            <li>Honours Degree in Robotics and Automation</li>
-            <li>Hackathon Winner — MATLAB Workshop Hackathon at IEEE Kerala Section (i5 event)</li>
-            <li>Exhibited Cobot project at Machinery Expo organised by Kerala Government</li>
-            <li>IEEE Publication — ICKECS 2024, doi: 10.1109/ICKECS61492.2024.10616915</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="languages">
-  <div class="section-inner">
-    <div class="section-label">// communication.stack</div>
-    <h2 class="section-title">Languages</h2>
-    <div class="section-divider"></div>
-    <div class="lang-cards">
-      <div class="card lang-big-card fade-up delay-1">
-        <div class="lang-flag">🇮🇳</div>
-        <div class="lang-name-big">Malayalam</div>
-        <div class="lang-level-label" style="color:#4fc3f7">Mother Tongue</div>
-        <div class="lang-bar-big-track"><div class="lang-bar-big-fill" style="width:100%;background:linear-gradient(90deg,#4fc3f7,#7c4dff)"></div></div>
-        <div class="lang-desc">Native · Full professional proficiency</div>
-      </div>
-      <div class="card lang-big-card fade-up delay-2">
-        <div class="lang-flag">🇬🇧</div>
-        <div class="lang-name-big">English</div>
-        <div class="lang-level-label" style="color:#7c4dff">C1 — Proficient</div>
-        <div class="lang-bar-big-track"><div class="lang-bar-big-fill" style="width:90%;background:linear-gradient(90deg,#7c4dff,#a855f7)"></div></div>
-        <div class="lang-desc">Proficient User · CEFR Level C1</div>
-      </div>
-      <div class="card lang-big-card fade-up delay-3">
-        <div class="lang-flag">🇩🇪</div>
-        <div class="lang-name-big">German</div>
-        <div class="lang-level-label" style="color:#ffb300">B1 — Intermediate</div>
-        <div class="lang-bar-big-track"><div class="lang-bar-big-fill" style="width:45%;background:linear-gradient(90deg,#ffb300,#f59e0b)"></div></div>
-        <div class="lang-desc">Intermediate User · Actively improving</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="contact">
-  <div class="contact-wrap">
-    <div class="section-label" style="text-align:center">// init.connection</div>
-    <h2 class="section-title" style="text-align:center">Let's <span class="cyan">Connect</span></h2>
-    <div class="section-divider" style="margin:14px auto 28px"></div>
-    <p class="contact-desc">Actively seeking Werkstudent roles in Robotics, Automation, and Mechatronics in the Hannover and Hamburg region.</p>
-    <div class="card contact-card">
-      <div class="avail-pill"><div class="dot-live"></div><span class="avail-text">Available for Werkstudent roles · Non-EU (work permit required)</span></div>
-      <div class="email-row">
-        <div class="email-display">arjunmohandas18@gmail.com</div>
-        <button class="copy-btn" id="copyBtn" onclick="copyEmail()">Copy Email</button>
-      </div>
-      <div class="social-links">
-        <a href="mailto:arjunmohandas18@gmail.com" class="social-link">✉ Email</a>
-        <span class="social-sep">·</span>
-        <a href="tel:+4915510244925" class="social-link">📞 +49 155 1024 4925</a>
-        <span class="social-sep">·</span>
-        <a href="https://linkedin.com" class="social-link" target="_blank" rel="noopener">◈ LinkedIn</a>
-        <span class="social-sep">·</span>
-        <a href="https://github.com" class="social-link" target="_blank" rel="noopener">◆ GitHub</a>
-      </div>
-    </div>
-    <div class="regions-grid">
-      <div class="region-chip">📍 Hannover</div><div class="region-chip">📍 Hamburg</div><div class="region-chip">📍 Lower Saxony</div>
-      <div class="region-chip">📍 Remote-Hybrid</div><div class="region-chip">📍 Wolfsburg</div><div class="region-chip">📍 Hildesheim</div>
     </div>
   </div>
 </section>
 
 <footer>
-  <span class="foot-text">© 2025 Arjun Mohandas · Voltmerstr. 47, Hannover</span>
-  <span class="foot-logo">AM<span style="color:#4fc3f7">.exe</span></span>
+  <div class="foot-logo">Arjun <span>M.</span></div>
+  <div class="foot-links">
+    <a href="https://www.linkedin.com/in/arjun-m123/" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="mailto:arjunmohandas18@gmail.com">Email</a>
+    <a href="https://doi.org/10.1109/ICKECS61492.2024.10616915" target="_blank" rel="noopener">IEEE Paper</a>
+  </div>
+  <p class="foot-copy">© 2025 Arjun Mohandas · Hannover, Germany</p>
 </footer>
 
-<script>
-const tagline='AI Driven Mechatronics and Robotics Student';
-let i=0;const el=document.getElementById('typed');
-function type(){if(i<tagline.length){el.textContent=tagline.slice(0,++i);setTimeout(type,65)}}
-setTimeout(type,800);
-
-const s1=[{n:'ROS / ROS2',l:65,up:true},{n:'SLAM & Path Planning',l:75},{n:'Control Systems',l:78},{n:'PLC & SCADA',l:70},{n:'LabVIEW',l:68},{n:'SolidWorks / Fusion 360',l:72}];
-const s2=[{n:'Python',l:88},{n:'C++',l:74},{n:'Embedded C',l:80},{n:'MATLAB',l:68}];
-const s3=[{n:'Arduino',l:90},{n:'Raspberry Pi',l:88},{n:'Microcontrollers (PLC)',l:75},{n:'I2C / SPI / Real-Time',l:72},{n:'Data Acquisition',l:70}];
-const colors=['#4fc3f7','#7c4dff','#ffb300'];
-
-function renderSkills(arr,id,color){
-  document.getElementById(id).innerHTML=arr.map(s=>`<div class="skill-row"><div class="skill-name-row"><span class="skill-name">${s.n}</span><div class="skill-right">${s.up?'<span class="upskill-tag">↑ Upskilling</span>':''}<span class="skill-pct" style="color:${color}">${s.l}%</span></div></div><div class="bar-track"><div class="bar-fill" style="--w:${s.l}%;width:${s.l}%;background:linear-gradient(90deg,${color},${color}88)"></div></div></div>`).join('');
-}
-renderSkills(s1,'skills1',colors[0]);
-renderSkills(s2,'skills2',colors[1]);
-renderSkills(s3,'skills3',colors[2]);
-
-const tools=['ROS','ROS2','Docker','Linux','Git','SolidWorks','Fusion 360','LabVIEW','Arduino IDE','VS Code','MATLAB','Raspberry Pi OS','MS Office'];
-document.getElementById('tools').innerHTML=tools.map(t=>`<span class="tool-pill">${t}</span>`).join('');
-
-function copyEmail(){
-  navigator.clipboard.writeText('arjunmohandas18@gmail.com');
-  const b=document.getElementById('copyBtn');
-  b.textContent='✓ Copied!';b.style.background='#22c55e';
-  setTimeout(()=>{b.textContent='Copy Email';b.style.background='#4fc3f7';},2000);
-}
-function toggleMenu(){document.getElementById('mobileMenu').classList.toggle('open');}
-function closeMenu(){document.getElementById('mobileMenu').classList.remove('open');}
-document.addEventListener('click',e=>{if(!e.target.closest('nav')&&!e.target.closest('#mobileMenu'))closeMenu();});
-</script>
+<script src="shared.js"></script>
 </body>
 </html>

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Experience — Arjun Mohandas</title>
+<link rel="stylesheet" href="shared.css"/>
+<style>
+.stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:56px}
+.stat-box{padding:22px 20px;border-radius:12px;text-align:center}
+.stat-num{font-family:'Playfair Display',serif;font-size:30px;font-weight:700;color:var(--blue);margin-bottom:4px;line-height:1}
+.stat-lbl{font-size:12px;color:var(--muted)}
+
+.neura-card{border-color:rgba(22,163,74,.25);background:linear-gradient(135deg,var(--white) 0%,var(--green-lt) 100%)}
+.neura-card .tl-dot{border-color:var(--green);background:var(--green-lt)}
+.neura-card .tl-org{color:var(--green)}
+
+@media(max-width:680px){.stats-row{grid-template-columns:repeat(2,1fr)}}
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="logo">Arjun <span>M.</span></a>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="projects.html">Projects</a>
+    <a href="skills.html">Skills</a>
+    <a href="experience.html">Experience</a>
+    <a href="education.html">Education</a>
+    <a href="contact.html" class="nav-cta">Contact</a>
+  </div>
+  <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">Home</a>
+  <a href="projects.html">Projects</a>
+  <a href="skills.html">Skills</a>
+  <a href="experience.html">Experience</a>
+  <a href="education.html">Education</a>
+  <a href="contact.html" class="mob-cta">Contact</a>
+</div>
+
+<div class="page-band">
+  <div class="page-band-inner">
+    <div class="band-eyebrow">Work History</div>
+    <h1>Professional Experience</h1>
+    <p>From Physical AI teleoperation at a humanoid robotics company to training engineers of the next generation.</p>
+  </div>
+</div>
+
+<section class="section">
+  <div class="shell">
+
+    <div class="stats-row">
+      <div class="card stat-box">
+        <div class="stat-num">3</div>
+        <div class="stat-lbl">Roles held</div>
+      </div>
+      <div class="card stat-box">
+        <div class="stat-num" style="color:var(--green);font-size:22px">Active</div>
+        <div class="stat-lbl">NEURA Robotics</div>
+      </div>
+      <div class="card stat-box">
+        <div class="stat-num">15+</div>
+        <div class="stat-lbl">Students mentored</div>
+      </div>
+      <div class="card stat-box">
+        <div class="stat-num">~30%</div>
+        <div class="stat-lbl">Fault rate reduction</div>
+      </div>
+    </div>
+
+    <div class="timeline">
+
+      <div class="tl-item">
+        <div class="tl-dot" style="border-color:var(--green);background:var(--green-lt)">⚡</div>
+        <div class="card tl-card neura-card">
+          <div class="tl-meta">
+            <span class="tl-period">September 2026 – Present</span>
+            <span class="badge badge-green"><div class="dot-live"></div>Currently Active</span>
+            <span class="badge badge-gray">Internship</span>
+          </div>
+          <div class="tl-title">Data / Teleoperation Intern</div>
+          <div class="tl-org">NEURA Robotics</div>
+          <div class="tl-loc">📍 Germany · Humanoid Robotics & Physical AI</div>
+          <ul class="tl-list">
+            <li>Collect real-world robot data through teleoperation to build training datasets for Physical AI — AI models that perceive, reason and act in the physical world</li>
+            <li>Review recordings for completeness and consistency, flagging and filtering faulty or unusable samples before they reach training pipelines</li>
+            <li>Train machine learning models on the collected data and evaluate performance to measure how well learned behaviors transfer to robotic tasks</li>
+            <li>Work at the intersection of robotics hardware and data-driven learning, supporting development of embodied AI systems for real robots</li>
+          </ul>
+          <div class="tl-tags">
+            <span class="tl-tag">Physical AI</span>
+            <span class="tl-tag">Teleoperation</span>
+            <span class="tl-tag">Embodied AI</span>
+            <span class="tl-tag">ML Training</span>
+            <span class="tl-tag">Data Quality</span>
+            <span class="tl-tag">Humanoid Robotics</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot">◆</div>
+        <div class="card tl-card">
+          <div class="tl-meta">
+            <span class="tl-period">August 2024 – February 2025</span>
+            <span class="badge badge-blue">Mentor</span>
+          </div>
+          <div class="tl-title">Junior Mentor</div>
+          <div class="tl-org">HowNWhy Education</div>
+          <div class="tl-loc">📍 Bengaluru, India · Robotics Education</div>
+          <ul class="tl-list">
+            <li>Mentored 15+ school and college students in robotics, embedded systems, and AI fundamentals using Arduino and Raspberry Pi</li>
+            <li>One student team advanced to the final round of Made in 3D — Seed the Entrepreneurs national program</li>
+            <li>Designed and delivered hands-on training sessions covering computer vision, line-following, and obstacle-detection systems</li>
+            <li>Achieved measurable improvement in student project outcomes across all cohorts</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot">⚙</div>
+        <div class="card tl-card">
+          <div class="tl-meta">
+            <span class="tl-period">February 2024 – April 2024</span>
+            <span class="badge badge-gray">Internship</span>
+          </div>
+          <div class="tl-title">Project Intern</div>
+          <div class="tl-org">Sunlux Technovations Pvt. Ltd.</div>
+          <div class="tl-loc">📍 Bengaluru, India · Embedded Systems</div>
+          <ul class="tl-list">
+            <li>Developed and tested embedded control circuits for SUNDOOR automated door control systems using C and LabVIEW, reducing hardware fault rate during validation by ~30%</li>
+            <li>Performed data acquisition, hardware validation, and system testing across the full embedded hardware development cycle</li>
+            <li>Identified and resolved 3 critical firmware-hardware integration issues before production</li>
+            <li>Assisted in prototype development, integration, and performance optimisation</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-logo">Arjun <span>M.</span></div>
+  <div class="foot-links">
+    <a href="https://www.linkedin.com/in/arjun-m123/" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="mailto:arjunmohandas18@gmail.com">Email</a>
+    <a href="https://doi.org/10.1109/ICKECS61492.2024.10616915" target="_blank" rel="noopener">IEEE Paper</a>
+  </div>
+  <p class="foot-copy">© 2025 Arjun Mohandas · Hannover, Germany</p>
+</footer>
+<script src="shared.js"></script>
+</body>
+</html>

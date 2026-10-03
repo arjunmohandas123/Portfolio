@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Education — Arjun Mohandas</title>
+<link rel="stylesheet" href="shared.css"/>
+<style>
+.course-wrap{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.course-tag{font-size:12.5px;padding:6px 14px;border-radius:8px;background:var(--blue-lt);color:var(--blue);border:1px solid rgba(35,83,232,.15);font-weight:500}
+
+.achiev-list{list-style:none;margin-top:16px}
+.achiev-list li{
+  display:flex;align-items:flex-start;gap:12px;
+  padding:12px 16px;border-radius:9px;
+  background:var(--off);margin-bottom:8px;
+  font-size:14px;color:var(--sub);line-height:1.6;
+}
+.achiev-list li span:first-child{font-size:18px;flex-shrink:0}
+
+.gpa-chip{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:8px 16px;background:var(--blue-lt);
+  border:1px solid rgba(35,83,232,.15);border-radius:8px;
+  font-size:13px;font-weight:600;color:var(--blue);
+  margin-top:14px;
+}
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="logo">Arjun <span>M.</span></a>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="projects.html">Projects</a>
+    <a href="skills.html">Skills</a>
+    <a href="experience.html">Experience</a>
+    <a href="education.html">Education</a>
+    <a href="contact.html" class="nav-cta">Contact</a>
+  </div>
+  <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">Home</a>
+  <a href="projects.html">Projects</a>
+  <a href="skills.html">Skills</a>
+  <a href="experience.html">Experience</a>
+  <a href="education.html">Education</a>
+  <a href="contact.html" class="mob-cta">Contact</a>
+</div>
+
+<div class="page-band">
+  <div class="page-band-inner">
+    <div class="band-eyebrow">Academic Background</div>
+    <h1>Education & Honours</h1>
+    <p>MSc at Leibniz Universität Hannover · B.Tech (Hons) from APJ Abdul Kalam Technological University · IEEE Published researcher.</p>
+  </div>
+</div>
+
+<section class="section">
+  <div class="shell">
+    <div class="timeline">
+
+      <div class="tl-item">
+        <div class="tl-dot" style="border-color:var(--blue);background:var(--blue-lt)">🎓</div>
+        <div class="card tl-card">
+          <div class="tl-meta">
+            <span class="tl-period">2024 – Expected June 2027</span>
+            <span class="badge badge-blue">Current</span>
+          </div>
+          <div class="tl-title">MSc — AI-Driven Mechatronics and Robotics</div>
+          <div class="tl-org">Leibniz Universität Hannover (LUH)</div>
+          <div class="tl-loc">📍 Hannover, Germany</div>
+          <ul class="tl-list">
+            <li>Specialisation in robotics, automation, AI integration, and intelligent mechatronic systems</li>
+            <li>Key project: Implemented six Kalman filter variants for 3D robot state estimation at the Geodätisches Institut</li>
+            <li>Research areas: computer vision, ROS2, embedded systems, sensor fusion, SLAM</li>
+          </ul>
+          <div style="margin-top:18px">
+            <div style="font-size:12px;color:var(--muted);font-weight:600;margin-bottom:10px;letter-spacing:.04em">RELEVANT COURSEWORK</div>
+            <div class="course-wrap">
+              <span class="course-tag">Robot Kinematics & Dynamics</span>
+              <span class="course-tag">Control Systems</span>
+              <span class="course-tag">Machine Learning for Robotics</span>
+              <span class="course-tag">Sensor Fusion</span>
+              <span class="course-tag">State Estimation (Kalman)</span>
+              <span class="course-tag">Computer Vision</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot">🎓</div>
+        <div class="card tl-card">
+          <div class="tl-meta">
+            <span class="tl-period">August 2020 – January 2024</span>
+            <span class="badge badge-gray">Completed</span>
+          </div>
+          <div class="tl-title">B.Tech (Hons) — Robotics and Automation</div>
+          <div class="tl-org">APJ Abdul Kalam Technological University</div>
+          <div class="tl-loc">📍 India</div>
+          <div class="gpa-chip">⭐ GPA: 1.8 (German Scale) · Honours Degree</div>
+          <ul class="tl-list" style="margin-top:16px">
+            <li>Robotics Fundamentals — kinematics, dynamics, and control of robotic systems</li>
+            <li>Automation Systems — industrial automation, PLC, SCADA, and control systems</li>
+            <li>Embedded Systems — microcontrollers, Arduino, Raspberry Pi, and real-time systems</li>
+            <li>Main Project: Medical Humanoid Robot with AI-based voice interaction module</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot" style="border-color:var(--gold);background:var(--gold-lt)">★</div>
+        <div class="card tl-card">
+          <div class="tl-meta">
+            <span class="tl-period">2020 – 2024</span>
+            <span class="badge badge-gold">Achievements</span>
+          </div>
+          <div class="tl-title">Honours, Awards & Publications</div>
+          <div class="tl-org">APJ Abdul Kalam Technological University</div>
+          <div class="tl-loc">📍 India</div>
+          <ul class="achiev-list">
+            <li><span>🏆</span><span>Hackathon Winner — MATLAB Workshop Hackathon at IEEE Kerala Section i5 event</span></li>
+            <li><span>🤖</span><span>Exhibited Cobot project at Machinery Expo organised by the Kerala Government</span></li>
+            <li><span>📄</span><span>IEEE Publication — ICKECS 2024 · DOI: 10.1109/ICKECS61492.2024.10616915</span></li>
+            <li><span>🎓</span><span>Awarded Honours Degree in Robotics and Automation (advanced specialisation track)</span></li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-logo">Arjun <span>M.</span></div>
+  <div class="foot-links">
+    <a href="https://www.linkedin.com/in/arjun-m123/" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="mailto:arjunmohandas18@gmail.com">Email</a>
+    <a href="https://doi.org/10.1109/ICKECS61492.2024.10616915" target="_blank" rel="noopener">IEEE Paper</a>
+  </div>
+  <p class="foot-copy">© 2025 Arjun Mohandas · Hannover, Germany</p>
+</footer>
+<script src="shared.js"></script>
+</body>
+</html>

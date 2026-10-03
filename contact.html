@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Contact — Arjun Mohandas</title>
+<link rel="stylesheet" href="shared.css"/>
+<style>
+.contact-layout{display:grid;grid-template-columns:1fr 1.6fr;gap:40px;align-items:start}
+
+/* Left column */
+.contact-info-col{}
+.avail-box{
+  padding:22px 24px;border-radius:14px;
+  background:var(--green-lt);border:1px solid rgba(22,163,74,.2);
+  margin-bottom:20px;
+}
+.avail-head{display:flex;align-items:center;gap:8px;margin-bottom:10px}
+.avail-title{font-size:14px;font-weight:600;color:var(--green)}
+.avail-body{font-size:13.5px;color:var(--sub);line-height:1.7}
+.region-row{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.region-tag{font-size:11.5px;padding:4px 11px;border-radius:6px;background:rgba(22,163,74,.1);color:var(--green);border:1px solid rgba(22,163,74,.15)}
+
+.info-list{list-style:none}
+.info-item{
+  display:flex;align-items:flex-start;gap:14px;
+  padding:14px 0;border-bottom:1px solid var(--off);
+}
+.info-item:last-child{border-bottom:none}
+.ii-icon{font-size:17px;width:22px;text-align:center;flex-shrink:0;margin-top:1px}
+.ii-label{font-size:11px;color:var(--muted);margin-bottom:3px;font-weight:500;letter-spacing:.04em}
+.ii-val{font-size:14px;color:var(--sub);font-weight:500}
+.ii-val a{color:var(--blue);transition:opacity .18s}
+.ii-val a:hover{opacity:.75}
+
+/* Form */
+.form-box{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:36px}
+.form-title{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:var(--text);margin-bottom:4px;letter-spacing:-.02em}
+.form-sub{font-size:13px;color:var(--muted);margin-bottom:28px}
+.form-group{margin-bottom:18px}
+.form-label{display:block;font-size:12px;font-weight:600;color:var(--sub);margin-bottom:8px;letter-spacing:.03em}
+.form-input,.form-textarea,.form-select{
+  width:100%;padding:12px 16px;
+  border:1.5px solid var(--border);border-radius:9px;
+  background:var(--off);color:var(--text);
+  font-family:'DM Sans',sans-serif;font-size:14px;
+  outline:none;transition:all .2s;
+  -webkit-appearance:none;appearance:none;
+}
+.form-input:focus,.form-textarea:focus,.form-select:focus{
+  border-color:var(--blue);background:var(--white);
+  box-shadow:0 0 0 3px rgba(35,83,232,.08);
+}
+.form-input::placeholder,.form-textarea::placeholder{color:var(--muted)}
+.form-textarea{resize:vertical;min-height:140px;line-height:1.65}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.form-select option{background:var(--white)}
+
+.submit-btn{
+  width:100%;padding:14px;border-radius:10px;border:none;
+  background:var(--blue);color:#fff;
+  font-family:'DM Sans',sans-serif;font-size:15px;font-weight:600;
+  cursor:pointer;transition:all .22s;
+  display:flex;align-items:center;justify-content:center;gap:8px;
+}
+.submit-btn:hover{background:#1a42cc;transform:translateY(-1px);box-shadow:var(--shadow-md)}
+.submit-btn:disabled{opacity:.6;cursor:not-allowed;transform:none}
+
+.msg{display:none;padding:14px 18px;border-radius:9px;font-size:13.5px;margin-top:14px;font-weight:500}
+.msg-ok{background:var(--green-lt);border:1px solid rgba(22,163,74,.2);color:var(--green)}
+.msg-err{background:#fef2f2;border:1px solid rgba(239,68,68,.2);color:#dc2626}
+.formspree-note{font-size:11px;color:var(--muted);text-align:center;margin-top:12px}
+
+@media(max-width:860px){.contact-layout{grid-template-columns:1fr}}
+@media(max-width:480px){.form-row{grid-template-columns:1fr}.form-box{padding:24px}}
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="logo">Arjun <span>M.</span></a>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="projects.html">Projects</a>
+    <a href="skills.html">Skills</a>
+    <a href="experience.html">Experience</a>
+    <a href="education.html">Education</a>
+    <a href="contact.html" class="nav-cta">Contact</a>
+  </div>
+  <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">Home</a>
+  <a href="projects.html">Projects</a>
+  <a href="skills.html">Skills</a>
+  <a href="experience.html">Experience</a>
+  <a href="education.html">Education</a>
+  <a href="contact.html" class="mob-cta">Contact</a>
+</div>
+
+<div class="page-band">
+  <div class="page-band-inner">
+    <div class="band-eyebrow">Get In Touch</div>
+    <h1>Let's Connect</h1>
+    <p>Open to Werkstudent roles, research collaborations, and professional opportunities across Germany.</p>
+  </div>
+</div>
+
+<section class="section">
+  <div class="shell">
+    <div class="contact-layout">
+
+      <div class="contact-info-col">
+        <div class="avail-box">
+          <div class="avail-head"><div class="dot-live"></div><span class="avail-title">Currently at NEURA Robotics</span></div>
+          <div class="avail-body">Open to Werkstudent roles in Robotics, Automation & Mechatronics.<br>Non-EU — work permit required.</div>
+          <div class="region-row">
+            <span class="region-tag">Hannover</span>
+            <span class="region-tag">Hamburg</span>
+            <span class="region-tag">Lower Saxony</span>
+            <span class="region-tag">Wolfsburg</span>
+            <span class="region-tag">Hildesheim</span>
+            <span class="region-tag">Remote/Hybrid</span>
+          </div>
+        </div>
+
+        <div class="card" style="padding:20px 24px">
+          <ul class="info-list">
+            <li class="info-item">
+              <div class="ii-icon">✉️</div>
+              <div><div class="ii-label">Email</div><div class="ii-val"><a href="mailto:arjunmohandas18@gmail.com">arjunmohandas18@gmail.com</a></div></div>
+            </li>
+            <li class="info-item">
+              <div class="ii-icon">📞</div>
+              <div><div class="ii-label">Phone</div><div class="ii-val"><a href="tel:+4915510244925">+49 155 1024 4925</a></div></div>
+            </li>
+            <li class="info-item">
+              <div class="ii-icon">🔗</div>
+              <div><div class="ii-label">LinkedIn</div><div class="ii-val"><a href="https://www.linkedin.com/in/arjun-m123/" target="_blank" rel="noopener">linkedin.com/in/arjun-m123</a></div></div>
+            </li>
+            <li class="info-item">
+              <div class="ii-icon">📍</div>
+              <div><div class="ii-label">Location</div><div class="ii-val">Hannover, Lower Saxony, Germany</div></div>
+            </li>
+            <li class="info-item">
+              <div class="ii-icon">📄</div>
+              <div><div class="ii-label">IEEE Publication</div><div class="ii-val"><a href="https://doi.org/10.1109/ICKECS61492.2024.10616915" target="_blank" rel="noopener">DOI: 10.1109/ICKECS61492.2024.10616915</a></div></div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Form -->
+      <div class="form-box">
+        <div class="form-title">Send a Message</div>
+        <div class="form-sub">Messages go directly to arjunmohandas18@gmail.com</div>
+
+        <!--
+          SETUP (2 minutes):
+          1. Go to https://formspree.io → sign up free
+          2. Create a new form → copy your form ID (e.g. xyzabcde)
+          3. Replace YOUR_FORMSPREE_ID below
+          Done — messages arrive in your Gmail inbox.
+        -->
+        <form id="contactForm" action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST">
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="name">Full Name</label>
+              <input class="form-input" type="text" id="name" name="name" placeholder="Your name" required/>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="email">Email Address</label>
+              <input class="form-input" type="email" id="email" name="email" placeholder="you@example.com" required/>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="subject">Subject</label>
+              <select class="form-select" id="subject" name="subject" required>
+                <option value="" disabled selected>Select a topic</option>
+                <option>Werkstudent Opportunity</option>
+                <option>Research Collaboration</option>
+                <option>Project Inquiry</option>
+                <option>IEEE / Publication</option>
+                <option>General Inquiry</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="company">Company / University <span style="color:var(--muted);font-weight:400">(optional)</span></label>
+              <input class="form-input" type="text" id="company" name="company" placeholder="Your organisation"/>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="message">Message</label>
+            <textarea class="form-textarea" id="message" name="message" placeholder="Tell me about the opportunity or your question..." required></textarea>
+          </div>
+          <input type="hidden" name="_subject" value="New portfolio message — arjunmohandas.vercel.app"/>
+          <button class="submit-btn" type="submit" id="submitBtn">
+            <span id="btnText">Send Message</span>
+          </button>
+          <div class="msg msg-ok" id="successMsg">✓ Message sent! I'll get back to you within 1–2 business days.</div>
+          <div class="msg msg-err" id="errorMsg">⚠ Something went wrong. Email me directly at arjunmohandas18@gmail.com</div>
+          <p class="formspree-note">Powered by Formspree · Privacy-respecting · No spam</p>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-logo">Arjun <span>M.</span></div>
+  <div class="foot-links">
+    <a href="https://www.linkedin.com/in/arjun-m123/" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="mailto:arjunmohandas18@gmail.com">Email</a>
+    <a href="https://doi.org/10.1109/ICKECS61492.2024.10616915" target="_blank" rel="noopener">IEEE Paper</a>
+  </div>
+  <p class="foot-copy">© 2025 Arjun Mohandas · Hannover, Germany</p>
+</footer>
+
+<script src="shared.js"></script>
+<script>
+const form = document.getElementById('contactForm')
+const btn = document.getElementById('submitBtn')
+const btnText = document.getElementById('btnText')
+const ok = document.getElementById('successMsg')
+const err = document.getElementById('errorMsg')
+
+form.addEventListener('submit', async e => {
+  e.preventDefault()
+  btn.disabled = true
+  btnText.textContent = 'Sending…'
+  ok.style.display = 'none'
+  err.style.display = 'none'
+  try {
+    const res = await fetch(form.action, {
+      method: 'POST', body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    })
+    if (res.ok) {
+      ok.style.display = 'block'
+      form.reset()
+      btnText.textContent = '✓ Sent!'
+      btn.style.background = 'var(--green)'
+      setTimeout(() => {
+        btnText.textContent = 'Send Message'
+        btn.style.background = ''
+        btn.disabled = false
+      }, 4000)
+    } else throw new Error()
+  } catch {
+    err.style.display = 'block'
+    btnText.textContent = 'Send Message'
+    btn.disabled = false
+  }
+})
+</script>
+</body>
+</html>
